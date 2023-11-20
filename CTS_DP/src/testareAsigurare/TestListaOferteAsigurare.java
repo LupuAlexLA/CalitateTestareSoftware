@@ -1,7 +1,7 @@
 package testareAsigurare;
 
 public class TestListaOferteAsigurare {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExceptionListaContracteValideVida, ExceptionPragAsigurareNegativ, ExceptionListaContracteVida {
         ListaOferteAsigurare listaOferteAsigurare = new ListaOferteAsigurare();
         OfertaAsigurare ofertaAsigurare1 = new OfertaAsigurare("Tiriac Auto",
                 10000, 450);

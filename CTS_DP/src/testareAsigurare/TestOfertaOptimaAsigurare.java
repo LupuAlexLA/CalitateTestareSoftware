@@ -52,7 +52,7 @@ public class TestOfertaOptimaAsigurare extends TestCase {
     }
 
     @Test
-    public void testRight1() {
+    public void testRight1() throws ExceptionListaContracteValideVida, ExceptionPragAsigurareNegativ, ExceptionListaContracteVida {
         double rezultatPragAsigurare;
         double expectedPragAsigurare = 300;
         OfertaAsigurare ofertaOptima = listaOferteAsigurare.getAsigurareOptima(pragMaximAsigurare);
@@ -63,7 +63,7 @@ public class TestOfertaOptimaAsigurare extends TestCase {
     }
 
     @Test
-    public void testRight2() {
+    public void testRight2() throws ExceptionListaContracteValideVida, ExceptionPragAsigurareNegativ, ExceptionListaContracteVida {
         double rezultatPragAsigurare;
         boolean ok;
         OfertaAsigurare ofertaOptima = listaOferteAsigurare.getAsigurareOptima(pragMaximAsigurare);
@@ -79,7 +79,7 @@ public class TestOfertaOptimaAsigurare extends TestCase {
     }
 
     @Test
-    public void testRight3() {
+    public void testRight3() throws ExceptionListaContracteValideVida, ExceptionPragAsigurareNegativ, ExceptionListaContracteVida {
         double rezultatLimitaMaximaAsigurata;
         double expectedLimitaMaximaAsigurata = 8000;
         OfertaAsigurare ofertaOptima = listaOferteAsigurare.getAsigurareOptima(pragMaximAsigurare);
@@ -90,7 +90,7 @@ public class TestOfertaOptimaAsigurare extends TestCase {
     }
 
     @Test
-    public void testExistence1() {
+    public void testExistence1() throws ExceptionListaContracteValideVida, ExceptionPragAsigurareNegativ, ExceptionListaContracteVida {
         double rezultatPragAsigurare;
         OfertaAsigurare ofertaOptima = listaOferteAsigurare.getAsigurareOptima(pragMaximAsigurare);
         rezultatPragAsigurare = ofertaOptima.getCostAsigurare();
@@ -99,7 +99,7 @@ public class TestOfertaOptimaAsigurare extends TestCase {
     }
 
     @Test
-    public void testExistence2() {
+    public void testExistence2() throws ExceptionListaContracteValideVida, ExceptionPragAsigurareNegativ, ExceptionListaContracteVida {
         double rezultatPragAsigurare;
         boolean ok = false;
         OfertaAsigurare ofertaOptima = listaOferteAsigurare.getAsigurareOptima(pragMaximAsigurare);
@@ -115,7 +115,7 @@ public class TestOfertaOptimaAsigurare extends TestCase {
     }
 
     @Test
-    public void testRange() {
+    public void testRange() throws ExceptionListaContracteValideVida, ExceptionPragAsigurareNegativ, ExceptionListaContracteVida {
         double rezultatPragAsigurare;
         boolean ok;
         double valMinimCostAsigurare;
@@ -203,7 +203,52 @@ public class TestOfertaOptimaAsigurare extends TestCase {
         assertEquals("Verificare prag asigurare cu valoare corecta folosind cross-check",
                 expectedPragAsigurare, rezultatPragAsigurare, 0.01);
     }
+
+    @Test
+    public void testInverseRelationship () throws ExceptionListaContracteValideVida, ExceptionPragAsigurareNegativ, ExceptionListaContracteVida {
+        int count = 0;
+        int countTotal = 0;
+        boolean ok;
+        double rezultatPragAsigurare;
+        double expectedPragAsigurare = 300;
+        OfertaAsigurare ofertaOptima =
+                listaOferteAsigurare.getAsigurareOptima(pragMaximAsigurare);
+        rezultatPragAsigurare = ofertaOptima.getCostAsigurare();
+        for (int i = 0; i < listaOferteAsigurare.listaOferte.size(); i++) {
+            if (listaOferteAsigurare.listaOferte.get(i).getCostAsigurare() < pragMaximAsigurare) {
+                countTotal++;
+            }
+        }
+        for (int i = 0; i < listaOferteAsigurare.listaOferte.size(); i++) {
+            if (listaOferteAsigurare.listaOferte.get(i).getCostAsigurare() < pragMaximAsigurare) {
+                if (expectedPragAsigurare != rezultatPragAsigurare) {
+                    count++;
+                }
+            }
+        }
+
+        if (countTotal - count >= 1)
+            ok = true;
+        else
+            ok = false;
+        assertTrue("Verificare numar contracte diferite de cel optim", ok);
+    }
+
+    @Test
+    public void testPerformance() throws ExceptionPragAsigurareNegativ,
+            ExceptionListaContracteVida, ExceptionListaContracteValideVida {
+        double maxTime = 5;
+        long startTime = System. currentTimeMillis ();
+        OfertaAsigurare ofertaOptima = listaOferteAsigurare.getAsigurareOptima(pragMaximAsigurare);
+        long endTime = System.currentTimeMillis();
+        long time = endTime - startTime;
+        assertTrue("Verificare performante", time < maxTime);
+    }
 }
+
+
+
+
 
 
 

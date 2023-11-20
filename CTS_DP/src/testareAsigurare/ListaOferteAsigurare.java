@@ -14,18 +14,38 @@ public class ListaOferteAsigurare {
         return listaOferte.get(index);
     }
 
-    public OfertaAsigurare getAsigurareOptima(float pragAsigurare) {
-        OfertaAsigurare ofertaOptima = listaOferte.get(0);
-        float raport;
+    public OfertaAsigurare getAsigurareOptima(float pragAsigurare) throws ExceptionPragAsigurareNegativ,
+            ExceptionListaContracteVida, ExceptionListaContracteValideVida {
+        if(pragAsigurare < 0) {
+            throw new ExceptionPragAsigurareNegativ("Prag asigurare negativ");
+        } else {
+            if(listaOferte.size() == 0) {
+                throw new ExceptionListaContracteVida("Lista contracte vida");
+            } else {
+                List<OfertaAsigurare> listaOferteValide = new ArrayList<OfertaAsigurare>();
+                for(int i = 0; i < listaOferte.size(); i++) {
+                    if(listaOferte.get(i).getCostAsigurare()<= pragAsigurare) {
+                        listaOferteValide.add(listaOferte.get(i));
+                    }
+                }
+                if(listaOferteValide.size() == 0) {
+                    throw new ExceptionListaContracteValideVida("Lista contracte valide vide");
+                } else {
+                    OfertaAsigurare ofertaOptima = listaOferte.get(0);
+                    float raport;
 
-        for(int i = 1; i < listaOferte.size(); i++) {
-            raport = listaOferte.get(i).getLimitaMaximaAsigurata() / listaOferte.get(i).getCostAsigurare();
-            if(raport > ofertaOptima.getLimitaMaximaAsigurata() / ofertaOptima.getCostAsigurare() &&
-                    listaOferte.get(i).getCostAsigurare() < pragAsigurare) {
-                ofertaOptima = listaOferte.get(i);
+                    for(int i = 1; i < listaOferte.size(); i++) {
+                        raport = listaOferte.get(i).getLimitaMaximaAsigurata() / listaOferte.get(i).getCostAsigurare();
+                        if(raport > ofertaOptima.getLimitaMaximaAsigurata() / ofertaOptima.getCostAsigurare() &&
+                                listaOferte.get(i).getCostAsigurare() < pragAsigurare) {
+                            ofertaOptima = listaOferte.get(i);
+                        }
+                    }
+                    return ofertaOptima;
+                }
             }
         }
-        return ofertaOptima;
+
     }
 
     public void afisareListaOferte() {
