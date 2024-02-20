@@ -1,0 +1,24 @@
+Pentru a respecta principiul Open/Closed (OCP) începând de la codul inițial monolit, vom refactoriza codul
+astfel încât să fie deschis pentru extensie, dar închis pentru modificare. Acest lucru înseamnă că vom proiecta
+sistemul nostru pentru a permite adăugarea de noi tipuri de mașini și operații legate de acestea
+(cum ar fi calculul taxei și generarea de rapoarte) fără a modifica codul existent.
+
+Vom începe prin definirea unei interfețe generice pentru calculul taxei și apoi vom implementa această interfață
+pentru diferite tipuri de mașini. De asemenea, vom abstractiza și ideea de generare a rapoartelor într-un mod similar.
+
+Pasul 1: Definirea Interfețelor (TaxCalculator, ReportGenerator)
+
+Pasul 2: Implementarea Interfețelor pentru Tipuri Specifice de Mașini
+Pentru exemplificare, vom crea calculatoare de taxe pentru mașinile electrice și non-electrice
+(ElectricCarTaxCalculator, NonElectricCarTaxCalculator)
+Similar, putem avea generatoare de rapoarte specifice, dar pentru simplitate,
+vom păstra o implementare generică care poate fi extinsă (SimpleReportGenerator)
+
+Pasul 3: Refactorizarea clasei Car pentru a Include Tipul de Mașină ca Strategie
+
+Pasul 4: Actualizarea clasei Main pentru a Utiliza Noile Clase și Interfețe
+
+Prin această refactorizare, am transformat sistemul într-unul care respectă principiul Open/Closed.
+Pentru a adăuga un nou tip de mașină sau o nouă logică de taxare, trebuie doar să implementăm interfața
+TaxCalculator corespunzătoare, fără a modifica codul existent. Acest design permite extinderea facilă a
+funcționalităților sistemului fără a afecta componentele deja existente.
