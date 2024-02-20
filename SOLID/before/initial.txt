@@ -1,0 +1,30 @@
+Să considerăm un exemplu simplu de gestionare a mașinilor într-o aplicație Java, care nu respectă principiile SOLID.
+Vom crea o clasă monolit care gestionează diferite aspecte ale mașinilor, de la adăugarea lor într-un inventar până la
+calcularea taxelor și generarea de rapoarte. Acest exemplu va evidenția modul în care un singur bloc de cod poate
+încerca să facă prea multe lucruri deodată, ceea ce duce la o structură greu de întreținut și extins.
+
+Problemele Codului Inițial
+Încălcarea SRP (Single Responsibility Principle): Clasa CarManagement are multiple responsabilități:
+gestionarea adăugării mașinilor, calcularea taxelor și generarea rapoartelor.
+Acest lucru îi conferă mai multe motive să se schimbe.
+
+Încălcarea OCP (Open/Closed Principle): Dacă dorim să adăugăm un nou tip de mașină sau o nouă logică de taxare,
+trebuie să modificăm clasa existentă, ceea ce face ca aceasta să nu fie închisă pentru modificare.
+
+Încălcarea LSP (Liskov Substitution Principle): Deși acest exemplu nu ilustrează direct LSP, structura actuală
+nu favorizează substituția obiectelor într-un mod care să respecte principiul Liskov, deoarece logica specifică
+este încorporată direct în metodele clasei.
+
+Încălcarea ISP (Interface Segregation Principle): Nu există interfețe separate pentru diferitele tipuri de comportament,
+ceea ce înseamnă că o clasă care implementează gestionarea mașinilor ar trebui să implementeze toate aceste
+comportamente, chiar dacă nu le necesită pe toate.
+
+Încălcarea DIP (Dependency Inversion Principle): Clasa CarManagement este strâns cuplată cu logica specifică de
+implementare pentru fiecare tip de mașină și operație, în loc să depindă de abstracții.
+
+Cum să Îmbunătățim Codul pentru a Respecta Principiile SOLID
+Pentru a respecta principiile SOLID, am putea refacta codul prin introducerea interfețelor și claselor abstracte
+pentru diferite responsabilități, cum ar fi adăugarea mașinilor, calculul taxelor și generarea rapoartelor.
+De asemenea, am putea folosi injecția de dependențe pentru a reduce cuplarea și a îmbunătăți flexibilitatea
+și testabilitatea. Această abordare ar permite adăugarea de noi tipuri de mașini sau schimbarea logicii de taxare
+și raportare fără a modifica codul existent, urmând principiul deschis/înc
