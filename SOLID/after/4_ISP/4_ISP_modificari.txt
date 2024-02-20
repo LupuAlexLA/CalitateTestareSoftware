@@ -1,0 +1,20 @@
+Principiul de segregare a interfeței (ISP) stipulează că nicio clasă nu ar trebui forțată să implementeze interfețe
+pe care nu le utilizează. Pentru a aplica acest principiu la codul inițial care presupune o clasă monolit,
+vom descompune funcționalitatea clasei CarManagement în interfețe mai mici și mai specifice,
+fiecare axată pe o responsabilitate unică.
+
+Pasul 1: Definirea Interfețelor Specifice
+Vom împărți responsabilitățile clasei CarManagement în interfețe separate:
+una pentru adăugarea mașinilor, una pentru calculul taxei și una pentru generarea rapoartelor.
+
+Pasul 2: Implementarea Interfețelor
+Acum, vom crea implementări specifice pentru fiecare dintre aceste interfețe.
+Pentru simplitate, vom asuma că există o clasă Car și o colecție de mașini este gestionată undeva în sistem.
+
+Pasul 3: Refactorizarea clasei Main pentru a Utiliza Noile Interfețe
+
+Prin această refactorizare, fiecare clasă acum îndeplinește o singură responsabilitate și implementează doar
+interfețele relevante pentru acea responsabilitate, conform principiului de segregare a interfețelor.
+Aceasta permite o flexibilitate mai mare în dezvoltarea ulterioară
+și îmbunătățește coeziunea și cuplarea dintre componente.
+
