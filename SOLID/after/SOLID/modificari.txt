@@ -1,0 +1,22 @@
+Pentru a implementa toate principiile SOLID într-un singur exemplu, vom refactoriza codul inițial care gestionează
+mașinile, aplicând fiecare principiu SOLID pas cu pas. Codul final va fi modular, extensibil și ușor de întreținut.
+
+Comentarii privind principiile SOLID
+
+Single Responsibility Principle (SRP): Fiecare clasă are o singură responsabilitate
+(gestionarea mașinilor, calculul taxei, generarea rapoartelor).
+
+Open/Closed Principle (OCP): Codul este deschis pentru extensie, dar închis pentru modificare.
+Putem adăuga noi implementări ale TaxService sau ReportService fără a modifica codul existent.
+
+Liskov Substitution Principle (LSP): Interfețele sunt proiectate astfel încât instanțele de clase derivate
+să poată fi folosite în locul unei instanțe a clasei de bază fără a afecta corectitudinea programului.
+
+Interface Segregation Principle (ISP): Utilizăm interfețe fine, segregate, astfel încât implementările
+să nu fie forțate să depindă de interfețe pe care nu le folosesc.
+
+Dependency Inversion Principle (DIP): Componentele de nivel înalt depind de abstracții,
+nu de implementări concrete, demonstrat prin injectarea dependențelor în Main.
+
+Această refactorizare demonstrează aplicarea principiilor SOLID într-un mod care îmbunătățește
+flexibilitatea, extensibilitatea și mentenabilitatea codului.
