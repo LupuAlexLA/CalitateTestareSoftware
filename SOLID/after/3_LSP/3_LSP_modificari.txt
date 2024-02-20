@@ -1,0 +1,23 @@
+Pentru a respecta Principiul Substituției Liskov (LSP) începând de la codul inițial care presupunea o clasă monolit,
+trebuie să ne asigurăm că orice clasă derivată poate fi folosită în locul unei clase de bază
+fără a afecta corectitudinea programului. Vom refactoriza codul pentru a folosi polimorfismul și a defini o ierarhie
+de clase unde fiecare subclasă poate fi substituită cu clasa de bază.
+
+Vom începe prin definirea unei clase de bază sau a unei interfețe pentru mașini și apoi vom extinde această bază
+pentru a include diferite tipuri de mașini.
+
+Pasul 1: Definirea clasei de bază (abstracta) Car
+
+Pasul 2: Crearea Subclaselor Specifice
+Vom crea subclase specifice pentru mașinile electrice și non-electrice,
+care implementează metoda displayTaxInformation() în moduri diferite, conform logicii lor specifice de taxare.
+
+Pasul 3: Refactorizarea clasei Main pentru a Demonstra LSP
+
+Prin această refactorizare, orice obiect de tip Car (fie că este ElectricCar sau NonElectricCar)
+poate fi tratat în mod uniform. Funcția displayCarTaxInformation poate accepta orice subclasă a Car,
+demonstrând aplicarea LSP - obiectele unei clase de bază pot fi înlocuite cu obiectele claselor derivate
+fără a afecta corectitudinea programului.
+
+Aceasta abordare îmbunătățește modularitatea și flexibilitatea codului, permițând extensii și modificări ale
+comportamentelor specifice mașinilor fără a afecta codul care le utilizează.
