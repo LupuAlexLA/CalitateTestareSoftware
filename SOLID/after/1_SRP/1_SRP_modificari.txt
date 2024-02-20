@@ -1,0 +1,23 @@
+Pentru a implementa principiul Single Responsibility Principle (SRP) în programul nostru de gestionare a mașinilor,
+vom împărți clasa CarManagement în mai multe clase, fiecare având o singură responsabilitate.
+Vom crea clase separate pentru adăugarea mașinilor, calcularea taxelor și generarea rapoartelor.
+
+Pasul 1: Definirea Modelelor de Mașini
+Înainte de a împărți responsabilitățile, să definim un model simplu pentru o mașină,
+care va fi utilizat în toate clasele noastre. (Car)
+
+Pasul 2: Crearea clasei CarInventory pentru Gestionarea Inventarului
+
+Pasul 3: Crearea clasei TaxCalculator pentru Calculul Taxelor
+
+Pasul 4: Crearea clasei ReportGenerator pentru Generarea Rapoartelor
+
+Pasul 5: Refactorizarea clasei Main pentru a Utiliza Noile Clase
+
+Prin aceste modificări, fiecare clasă are acum o singură responsabilitate:
+CarInventory gestionează inventarul de mașini,
+TaxCalculator calculează taxele pentru mașini,
+ReportGenerator generează rapoarte.
+
+Aceasta este conformă cu principiul Single Responsibility din SOLID, facilitând întreținerea și extinderea
+fiecărei părți a sistemului în mod independent.
