@@ -1,0 +1,21 @@
+Principiul Inversării Dependențelor (Dependency Inversion Principle - DIP) afirmă că modulele de nivel înalt
+nu ar trebui să depindă de modulele de nivel jos, ci ambele ar trebui să depindă de abstracțiuni.
+De asemenea, abstracțiile nu ar trebui să depindă de detalii, ci detaliile ar trebui să depindă de abstracțiuni.
+Pentru a aplica acest principiu la codul inițial, vom separa responsabilitățile în interfețe (abstracțiuni)
+și apoi vom implementa aceste interfețe în clase separate.
+
+Pasul 1: Definirea Abstracțiilor (Interfețelor)
+Pentru a aplica DIP, vom defini interfețe pentru
+gestionarea adăugării mașinilor, calculul taxei și generarea rapoartelor.
+
+Pasul 2: Implementarea Interfețelor
+Implementăm aceste interfețe în clase concrete.
+
+Pasul 3: Injectarea Dependențelor în Main
+Implementăm un Main care utilizează injecția de dependențe pentru a asambla componentele noastre.
+
+Prin acest design, Main (un modul de nivel înalt) nu depinde direct de implementările modulelor de nivel jos
+(InMemoryCarRepository, SimpleTaxService, ConsoleReportService), ci doar de abstracțiile lor.
+Acest lucru facilitează testarea, întreținerea și extinderea codului, permițând, de exemplu,
+înlocuirea unei implementări a repository-ului fără a modifica codul care îl utilizează.
+Implementarea DIP ajută la crearea unui cod mai flexibil și mai modular.
